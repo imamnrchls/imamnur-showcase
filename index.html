@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f3ee">
+  <meta name="color-scheme" content="light">
+  <title>Digital Products — Imam Nurcholis</title>
+  <meta name="description" content="Digital products and Garmin Connect IQ Pro watch face licenses by Imam Nurcholis.">
+  <link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Top-center "+" menu button (signature imamnur.my.id) -->
+  <button class="plus" type="button" id="menuToggle" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Fullscreen overlay menu -->
+  <nav class="menu" id="menu" aria-label="Main navigation" aria-hidden="true">
+    <ol id="menuList"></ol>
+    <div class="menu-foot small" id="menuFoot"></div>
+  </nav>
+
+  <!-- Fixed topbar -->
+  <header class="topbar small" id="topbar">
+    <a href="#" id="brandLink">Imam Nurcholis</a>
+    <span class="page-code" id="pageCode">ST-001-9</span>
+  </header>
+
+  <main class="page" id="top">
+    <!-- Editorial Page Header -->
+    <section class="page-head">
+      <p class="eyebrow small muted" id="storeEyebrow">Garmin Watch Faces · emimem.gumroad.com</p>
+      <h1 class="title" id="storeTitle">DIGITAL PRODUCTS</h1>
+      <div class="lede">
+        <p class="small muted" id="storeCountLabel">00 PRODUCTS AVAILABLE</p>
+        <p id="storeDescription">
+          Pro licenses for Garmin Connect IQ watch faces designed and published under imemnur. Every face is free to try on the Connect IQ Store — Pro unlocks custom themes, extra metrics, and Always-On Display.
+        </p>
+        <div class="lede-actions">
+          <a class="pill-btn small" id="gumroadProfileBtn" href="https://emimem.gumroad.com/" target="_blank" rel="noopener">
+            <span>Visit Gumroad</span>
+            <svg class="ico" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 11.5l9-9M4 2.5h7.5V10"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+
+    <!-- Key Figures Strip (matching imamnur.my.id .figs.wide) -->
+    <ul class="figs wide" id="storeStats" aria-label="Catalog overview"></ul>
+
+    <!-- Filter, Search & View Controls -->
+    <section class="catalog-controls" id="catalog" aria-label="Filter and search products">
+      <div class="controls-top">
+        <div class="search-box">
+          <svg class="ico search-ico" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="7" cy="7" r="4.8"></circle>
+            <path d="M10.8 10.8L14 14"></path>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search products, categories, features, or code..."
+            autocomplete="off"
+            aria-label="Search digital products"
+          >
+          <button type="button" id="searchClear" class="search-clear small" hidden aria-label="Clear search">
+            <svg class="ico" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+          </button>
+        </div>
+
+        <div class="controls-right">
+          <label class="sort-wrap small" for="sortSelect">
+            <span class="muted">Sort</span>
+            <select id="sortSelect" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="title">Name: A → Z</option>
+            </select>
+          </label>
+
+          <div class="view-switch small" role="group" aria-label="View mode">
+            <button type="button" class="view-btn is-active" data-view="grid" aria-pressed="true">Grid</button>
+            <button type="button" class="view-btn" data-view="index" aria-pressed="false">Index</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-cats">
+        <div class="cat-pills" id="categoryPills" role="tablist" aria-label="Category filter"></div>
+        <p class="result-meta small muted" id="resultMeta" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Product Catalog Container -->
+    <section class="catalog-section" aria-label="Digital product list">
+      <div id="catalogGrid" class="product-grid"></div>
+      <ul id="catalogIndex" class="rows index" hidden></ul>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state" hidden>
+        <p class="empty-no" aria-hidden="true">00</p>
+        <h2 class="empty-title">No matching products</h2>
+        <p class="muted">Try adjusting your search query or switching to another category.</p>
+        <button type="button" id="resetFiltersBtn" class="pill-btn small">Reset all filters</button>
+      </div>
+    </section>
+
+    <!-- FAQ / Info Strip -->
+    <section class="store-notes" id="faq" aria-label="Activation and licensing">
+      <div class="notes-head">
+        <p class="small muted">NT-002-4 · Information</p>
+        <h2 class="notes-title">Activation &amp; licensing</h2>
+      </div>
+      <ul class="facts notes-facts">
+        <li>
+          <span class="small muted">01 · Try Free First</span>
+          <span>Install the free watch face from the Garmin Connect IQ Store first to confirm compatibility and layout on your watch.</span>
+        </li>
+        <li>
+          <span class="small muted">02 · Instant License Key</span>
+          <span>After purchasing on Gumroad (emimem.gumroad.com), your Pro license key arrives immediately by email. Paste it into the watch face settings in the Connect IQ app to unlock all Pro features.</span>
+        </li>
+        <li>
+          <span class="small muted">03 · One-Time Purchase</span>
+          <span>Every license is a one-time payment with free future updates. Need help activating or have a question? Send me an email below.</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Floating Hover Preview (Index View, desktop only) -->
+  <div class="float-preview" id="floatPreview" aria-hidden="true"></div>
+
+  <!-- Product Detail Modal -->
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-sheet" role="document">
+      <div class="modal-top small">
+        <span id="modalCode" class="muted">WF-001-1</span>
+        <div class="modal-nav">
+          <button type="button" id="modalPrev" class="modal-nav-btn" aria-label="Previous product">
+            <svg class="ico" viewBox="0 0 14 14" aria-hidden="true"><path d="M12 7H2M6 3L2 7l4 4"/></svg>
+            <span>Prev</span>
+          </button>
+          <span class="muted" aria-hidden="true">/</span>
+          <button type="button" id="modalNext" class="modal-nav-btn" aria-label="Next product">
+            <span>Next</span>
+            <svg class="ico" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </button>
+          <button type="button" class="modal-close" data-close-modal aria-label="Close product details">
+            <span>Close</span>
+            <svg class="ico" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body" id="modalBody">
+        <!-- Populated dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature imamnur.my.id Footer -->
+  <footer class="site-foot" id="siteFoot">
+    <div class="foot-art" aria-hidden="true">
+      <div class="foot-pic">
+        <img src="images/footer-painted.webp" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="foot-lines" aria-hidden="true">
+      <i class="v v1"></i>
+      <i class="v v2"></i>
+    </div>
+    <div class="foot-inner">
+      <p class="foot-big" id="footCta"></p>
+      <div class="foot-row small">
+        <span id="footCopy"></span>
+        <nav id="footLinks"></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
